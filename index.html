@@ -2,9 +2,60 @@
 <html>
 <head>
 	<title> Baking Helper </title>
+	<style> 
+	table {
+			border-collapse: collapse;
+			border: 1px white;
+		}
+	th {
+		background-color: #ffffff;
+		border: 1px solid pink;
+	}
+	td {
+		padding: 2px;
+	}
+	</style>
 	<meta charset="utf-8">
 </head>
-<body>
-	재료 계량 환산을 도와주는 사이트입니다.
+<body style="background-color:pink;">
+	<h2>재료 계량 환산을 도와주는 사이트입니다. </h2>
+	<p><table border="1">
+		<tr>
+			<th>재료</th>
+			<th>컵</th>
+			<th>테이블스푼</th>
+			<th>티스푼</th>
+			<th>그램</th>
+		</tr>
+		<tr>
+			<td>밀가루</td>
+			<td><input id="flourCup" type="number" placeholder="125g"
+			oninput="flourConverter(this.value, flourTbsp.value, flourTsp.value)"
+			onchange="flourConverter(this.value, flourTbsp.value, flourTsp.value)"></td>
+			<td><input id="flourTbsp" type="number" placeholder="7.8g"
+			oninput="flourConverter(flourCup.value, this.value, flourTsp.value)"
+			onchange="flourConverter(flourCup.value, this.value, flourTsp.value)"></td>
+			<td><input id="flourTsp" type="number" placeholder="2.6g" 
+			oninput="flourConverter(flourCup.value, flourTbsp.value, this.value)"
+			onchange="flourConverter(flourCup.value, flourTbsp.value, this.value)"></td>
+			<td><span id="flourGrams"></span></td>
+		</tr>
+		<tr>
+			<td>물</td>
+			<td><input id="waterCup" type="number" placeholder="240g"
+			oninput="waterConverter(this.value, waterTbsp.value, waterTsp.value)"
+			onchange="waterConverter(this.value, waterTbsp.value, waterTsp.value)"></td>
+			<td><input id="waterTbsp" type="number" placeholder="15g"
+			oninput="waterConverter(waterCup.value, this.value, waterTsp.value)"
+			onchange="waterConverter(waterCup.value, this.value, waterTsp.value)"></td>
+			<td><input id="waterTsp" type="number" placeholder="5g"
+			oninput="waterConverter(waterCup.value, waterTbsp.value, this.value)"
+			onchange="waterConverter(waterCup.value, waterTbsp.value, this.value)"></td>
+			<td><span id="waterGrams"></span></td>
+		</tr></p>
+	<marquee behavior><p style="color:#FF0000";><strong>@->---- 좋은 하루 되세요 @->----</strong></p> </marquee>
+	<!--<button type="button">변환</button><br>-->
+	<script type="text/javascript" src="converter.js"></script>
 </body>
+
 </html>
