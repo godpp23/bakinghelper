@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Baking Helper </title>
+	<style> 
+	body {
+		background-color: pink;
+	}
+	.center {
+		margin: auto;
+		max-width: 670px;
+		padding: 10px;
+	}
+	table {
+			border-collapse: collapse;
+			border: 1px solid white;
+			table-layout: fixed;
+		}
+	th {
+		background-color: #ffffff;
+		border: 1px solid pink;
+	}
+	th:nth-child(5) {
+		width: 40px;
+	}
+	td {
+		padding: 2px;
+		border: 1px solid white;
+	}
+	.type {
+		text-align: center;
+	}
+	</style>
+	<meta charset="utf-8">
+</head>
+<body class="center">
+	<a href="gramConversion.html">→컵-그램 환산</a>
+	<a href="panConversion.html">다른 틀로 바꾸기</a>
+	<h2>재료 계량 환산을 도와주는 사이트입니다. </h2>
+		<p><table>
+			<tr>
+				<th>재료</th>
+				<th>컵</th>
+				<th>테이블스푼</th>
+				<th>티스푼</th>
+				<th>그램</th>
+			</tr>
+			<tr class="type">
+				<td colspan="5">밀가루</td>
+			</tr>
+			<tr>
+				<td>강력분</td>
+				<td><input id="breadFlourCup" type="number" min="0"placeholder="136g"
+				oninput="breadFlourConverter(this.value, breadFlourTbsp.value, breadFlourTsp.value)"
+				onchange="breadFlourConverter(this.value, breadFlourTbsp.value, breadFlourTsp.value)"></td>
+				<td><input id="breadFlourTbsp" type="number" min="0"placeholder="8.5g"
+				oninput="breadFlourConverter(breadFlourCup.value, this.value, breadFlourTsp.value)"
+				onchange="breadFlourConverter(breadFlourCup.value, this.value, breadFlourTsp.value)"></td>
+				<td><input id="breadFlourTsp" type="number" min="0"placeholder="2.8g" 
+				oninput="breadFlourConverter(breadFlourCup.value, breadFlourTbsp.value, this.value)"
+				onchange="breadFlourConverter(breadFlourCup.value, breadFlourTbsp.value, this.value)"></td>
+				<td><span id="breadFlourGrams"></span></td>
+			</tr>
+			<tr>
+				<td>중력분</td>
+				<td><input id="allPurposeFlourCup" type="number" min="0"placeholder="125g"
+				oninput="allPurposeFlourConverter(this.value, allPurposeFlourTbsp.value, allPurposeFlourTsp.value)"
+				onchange="allPurposeFlourConverter(this.value, allPurposeFlourTbsp.value, allPurposeFlourTsp.value)"></td>
+				<td><input id="allPurposeFlourTbsp" type="number" min="0"placeholder="7.8g"
+				oninput="allPurposeFlourConverter(allPurposeFlourCup.value, this.value, allPurposeFlourTsp.value)"
+				onchange="allPurposeFlourConverter(allPurposeFlourCup.value, this.value, allPurposeFlourTsp.value)"></td>
+				<td><input id="allPurposeFlourTsp" type="number" min="0"placeholder="2.6g" 
+				oninput="allPurposeFlourConverter(allPurposeFlourCup.value, allPurposeFlourTbsp.value, this.value)"
+				onchange="allPurposeFlourConverter(allPurposeFlourCup.value, allPurposeFlourTbsp.value, this.value)"></td>
+				<td><span id="allPurposeFlourGrams"></span></td>
+			</tr>
+			<tr>
+				<td>박력분</td>
+				<td><input id="cakeFlourCup" type="number" min="0"placeholder="130g"
+				oninput="cakeFlourConverter(this.value, cakeFlourTbsp.value, cakeFlourTsp.value)"
+				onchange="cakeFlourConverter(this.value, cakeFlourTbsp.value, cakeFlourTsp.value)"></td>
+				<td><input id="cakeFlourTbsp" type="number" min="0"placeholder="8.1g"
+				oninput="cakeFlourConverter(cakeFlourCup.value, this.value, cakeFlourTsp.value)"
+				onchange="cakeFlourConverter(cakeFlourCup.value, this.value, cakeFlourTsp.value)"></td>
+				<td><input id="cakeFlourTsp" type="number" min="0"placeholder="2.7g" 
+				oninput="cakeFlourConverter(cakeFlourCup.value, cakeFlourTbsp.value, this.value)"
+				onchange="cakeFlourConverter(cakeFlourCup.value, cakeFlourTbsp.value, this.value)"></td>
+				<td><span id="cakeFlourGrams"></span></td>
+			</tr>
+			<tr class="type">
+				<td colspan="5">가루류</td>
+			</tr>
+			<tr>
+				<td>백설탕</td>
+				<td><input id="sugarCup" type="number" min="0"placeholder="201g"
+				oninput="sugarConverter(this.value, sugarTbsp.value, sugarTsp.value)"
+				onchange="sugarConverter(this.value, sugarTbsp.value, sugarTsp.value)"></td>
+				<td><input id="sugarTbsp" type="number" min="0"placeholder="12.6g"
+				oninput="sugarConverter(sugarCup.value, this.value, sugarTsp.value)"
+				onchange="sugarConverter(sugarCup.value, this.value, sugarTsp.value)"></td>
+				<td><input id="sugarTsp" type="number" min="0"placeholder="4.2g"
+				oninput="sugarConverter(sugarCup.value, sugarTbsp.value, this.value)"
+				onchange="sugarConverter(sugarCup.value, sugarTbsp.value, this.value)"></td>
+				<td><span id="sugarGrams"></span></td>
+			</tr>
+			<tr>
+				<td>소금</td>
+				<td><input id="saltCup" type="number" min="0"placeholder="273g"
+				oninput="saltConverter(this.value, saltTbsp.value, saltTsp.value)"
+				onchange="saltConverter(this.value, saltTbsp.value, saltTsp.value)"></td>
+				<td><input id="saltTbsp" type="number" min="0"placeholder="17.1g"
+				oninput="saltConverter(saltCup.value, this.value, saltTsp.value)"
+				onchange="saltConverter(saltCup.value, this.value, saltTsp.value)"></td>
+				<td><input id="saltTsp" type="number" min="0"placeholder="5.7g"
+				oninput="saltConverter(saltCup.value, saltTbsp.value, this.value)"
+				onchange="saltConverter(saltCup.value, saltTbsp.value, this.value)"></td>
+				<td><span id="saltGrams"></span></td>
+			</tr>
+			<tr>
+				<td>코코아파우더</td>
+				<td><input id="cocoaPowderCup" type="number" min="0"placeholder="120g"
+				oninput="cocoaPowderConverter(this.value, cocoaPowderTbsp.value, cocoaPowderTsp.value)"
+				onchange="cocoaPowderConverter(this.value, cocoaPowderTbsp.value, cocoaPowderTsp.value)"></td>
+				<td><input id="cocoaPowderTbsp" type="number" min="0"placeholder="7.5g"
+				oninput="cocoaPowderConverter(cocoaPowderCup.value, this.value, cocoaPowderTsp.value)"
+				onchange="cocoaPowderConverter(cocoaPowderCup.value, this.value, cocoaPowderTsp.value)"></td>
+				<td><input id="cocoaPowderTsp" type="number" min="0"placeholder="2.5g"
+				oninput="cocoaPowderConverter(cocoaPowderCup.value, cocoaPowderTbsp.value, this.value)"
+				onchange="cocoaPowderConverter(cocoaPowderCup.value, cocoaPowderTbsp.value, this.value)"></td>
+				<td><span id="cocoaPowderGrams"></span></td>
+			</tr>
+			<tr class="type">
+				<td colspan="5">액체류</td>
+			</tr>
+			<tr>
+				<td>물</td>
+				<td><input id="waterCup" type="number" min="0"placeholder="240g"
+				oninput="waterConverter(this.value, waterTbsp.value, waterTsp.value)"
+				onchange="waterConverter(this.value, waterTbsp.value, waterTsp.value)"></td>
+				<td><input id="waterTbsp" type="number" min="0"placeholder="15g"
+				oninput="waterConverter(waterCup.value, this.value, waterTsp.value)"
+				onchange="waterConverter(waterCup.value, this.value, waterTsp.value)"></td>
+				<td><input id="waterTsp" type="number" min="0"placeholder="5g"
+				oninput="waterConverter(waterCup.value, waterTbsp.value, this.value)"
+				onchange="waterConverter(waterCup.value, waterTbsp.value, this.value)"></td>
+				<td><span id="waterGrams"></span></td>
+			</tr>
+			<tr>
+				<td>버터</td>
+				<td><input id="butterCup" type="number" min="0"placeholder="227g"
+				oninput="butterConverter(this.value, butterTbsp.value, butterTsp.value)"
+				onchange="butterConverter(this.value, butterTbsp.value, butterTsp.value)"></td>
+				<td><input id="butterTbsp" type="number" min="0"placeholder="14.2g"
+				oninput="butterConverter(butterCup.value, this.value, butterTsp.value)"
+				onchange="butterConverter(butterCup.value, this.value, butterTsp.value)"></td>
+				<td><input id="butterTsp" type="number" min="0"placeholder="4.7g"
+				oninput="butterConverter(butterCup.value, butterTbsp.value, this.value)"
+				onchange="butterConverter(butterCup.value, butterTbsp.value, this.value)"></td>
+				<td><span id="butterGrams"></span></td>
+			</tr>
+			<tr>
+				<td>꿀</td>
+				<td><input id="honeyCup" type="number" min="0"placeholder="340g"
+				oninput="honeyConverter(this.value, honeyTbsp.value, honeyTsp.value)"
+				onchange="honeyConverter(this.value, honeyTbsp.value, honeyTsp.value)"></td>
+				<td><input id="honeyTbsp" type="number" min="0"placeholder="21.3g"
+				oninput="honeyConverter(honeyCup.value, this.value, honeyTsp.value)"
+				onchange="honeyConverter(honeyCup.value, this.value, honeyTsp.value)"></td>
+				<td><input id="honeyTsp" type="number" min="0"placeholder="7.1g"
+				oninput="honeyConverter(honeyCup.value, honeyTbsp.value, this.value)"
+				onchange="honeyConverter(honeyCup.value, honeyTbsp.value, this.value)"></td>
+				<td><span id="honeyGrams"></span></td>
+			</tr>
+			<!--<tr>
+				<td colspan="5"><marquee behavior><p style="color:#FF0000";><strong>@->---- 좋은 하루 되세요 @->----</strong></p> </marquee></td>
+			</tr>-->
+		</table></p>
+	<marquee behavior><p style="color:#FF0000";><strong>@->---- 좋은 하루 되세요 @->----</strong></p> </marquee>
+	<!--<button type="button">변환</button><br>-->
+	<script type="text/javascript" src="converter.js"></script>
+</body>
+
+</html>
