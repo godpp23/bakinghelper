@@ -24,6 +24,11 @@ function sugarConverter(cup, tbsp, tsp) {
 	document.getElementById("sugarGrams").innerHTML = parseFloat(output.toFixed(1));
 }
 
+function powderedSugarConverter(cup, tbsp, tsp) {
+	var output = cup * 120 + tbsp * 7.5 + tsp * 2.5;
+	document.getElementById("powderedSugarGrams").innerHTML = parseFloat(output.toFixed(1));
+}
+
 function saltConverter(cup, tbsp, tsp) {
 	var output = cup * 273.12 + tbsp * 17.07 + tsp * 5.69;
 	document.getElementById("saltGrams").innerHTML = parseFloat(output.toFixed(1));
@@ -44,6 +49,21 @@ function honeyConverter(cup, tbsp, tsp) {
 	document.getElementById("honeyGrams").innerHTML = parseFloat(output.toFixed(1));
 }
 
+function oilConverter(cup, tbsp, tsp) {
+	var output = cup * 218 + tbsp * 13.63 + tsp * 4.54;
+	document.getElementById("oilGrams").innerHTML = parseFloat(output.toFixed(1));
+}
+
+function chocochipConverter(cup, tbsp, tsp) {
+	var output = cup * 170 + tbsp * 10.63 + tsp * 3.54;
+	document.getElementById("chocochipGrams").innerHTML = parseFloat(output.toFixed(1));
+}
+
+function chocochunkConverter(cup, tbsp, tsp) {
+	var output = cup * 140 + tbsp * 8.75 + tsp * 2.92;
+	document.getElementById("chocochunkGrams").innerHTML = parseFloat(output.toFixed(1));
+}
+
 var Pan = function(shape, size) {
 	this.shape = shape;
 	this.size = size;
@@ -61,5 +81,5 @@ function panConverter(before, after, ingredient) {
 	else
 		afterArea = afterSize * afterSize;
 	var ratio = afterArea / beforeArea;
-	document.getElementById('afterIngredient').innerHTML = (ingredient * ratio).toFixed(1);
+	document.getElementById('afterIngredient').innerHTML = (ingredient * ratio).toFixed(1) + " g";
 }

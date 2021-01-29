@@ -37,6 +37,7 @@
 	<a href="gramConversion.html">→컵-그램 환산</a>
 	<a href="panConversion.html">다른 틀로 바꾸기</a>
 	<h2>재료 계량 환산을 도와주는 사이트입니다. </h2>
+	<p>분수는 소수로 변환해 입력하세요. (예: 1/2컵 = 0.5컵, 1/3컵 = 0.33컵)
 		<p><table>
 			<tr>
 				<th>재료</th>
@@ -91,7 +92,7 @@
 				<td colspan="5">가루류</td>
 			</tr>
 			<tr>
-				<td>백설탕</td>
+				<td>설탕</td>
 				<td><input id="sugarCup" type="number" min="0"placeholder="201g"
 				oninput="sugarConverter(this.value, sugarTbsp.value, sugarTsp.value)"
 				onchange="sugarConverter(this.value, sugarTbsp.value, sugarTsp.value)"></td>
@@ -102,6 +103,19 @@
 				oninput="sugarConverter(sugarCup.value, sugarTbsp.value, this.value)"
 				onchange="sugarConverter(sugarCup.value, sugarTbsp.value, this.value)"></td>
 				<td><span id="sugarGrams"></span></td>
+			</tr>
+			<tr>
+				<td>슈가 파우더</td>
+				<td><input id="powderedSugarCup" type="number" min="0"placeholder="120g"
+				oninput="powderedSugarConverter(this.value, powderedSugarTbsp.value, powderedSugarTsp.value)"
+				onchange="powderedSugarConverter(this.value, powderedSugarTbsp.value, powderedSugarTsp.value)"></td>
+				<td><input id="powderedSugarTbsp" type="number" min="0"placeholder="7.5g"
+				oninput="powderedSugarConverter(powderedSugarCup.value, this.value, powderedSugarTsp.value)"
+				onchange="powderedSugarConverter(powderedSugarCup.value, this.value, powderedSugarTsp.value)"></td>
+				<td><input id="powderedSugarTsp" type="number" min="0"placeholder="2.5g"
+				oninput="powderedSugarConverter(powderedSugarCup.value, powderedSugarTbsp.value, this.value)"
+				onchange="powderedSugarConverter(powderedSugarCup.value, powderedSugarTbsp.value, this.value)"></td>
+				<td><span id="powderedSugarGrams"></span></td>
 			</tr>
 			<tr>
 				<td>소금</td>
@@ -146,17 +160,17 @@
 				<td><span id="waterGrams"></span></td>
 			</tr>
 			<tr>
-				<td>버터</td>
-				<td><input id="butterCup" type="number" min="0"placeholder="227g"
-				oninput="butterConverter(this.value, butterTbsp.value, butterTsp.value)"
-				onchange="butterConverter(this.value, butterTbsp.value, butterTsp.value)"></td>
-				<td><input id="butterTbsp" type="number" min="0"placeholder="14.2g"
-				oninput="butterConverter(butterCup.value, this.value, butterTsp.value)"
-				onchange="butterConverter(butterCup.value, this.value, butterTsp.value)"></td>
-				<td><input id="butterTsp" type="number" min="0"placeholder="4.7g"
-				oninput="butterConverter(butterCup.value, butterTbsp.value, this.value)"
-				onchange="butterConverter(butterCup.value, butterTbsp.value, this.value)"></td>
-				<td><span id="butterGrams"></span></td>
+				<td>식물성 오일</td>
+				<td><input id="oilCup" type="number" min="0"placeholder="218"
+				oninput="oilConverter(this.value, oilTbsp.value, oilTsp.value)"
+				onchange="oilConverter(this.value, oilTbsp.value, oilTsp.value)"></td>
+				<td><input id="oilTbsp" type="number" min="0"placeholder="13.6g"
+				oninput="oilConverter(oilCup.value, this.value, oilTsp.value)"
+				onchange="oilConverter(oilCup.value, this.value, oilTsp.value)"></td>
+				<td><input id="oilTsp" type="number" min="0"placeholder="4.5g"
+				oninput="oilConverter(oilCup.value, oilTbsp.value, this.value)"
+				onchange="oilConverter(oilCup.value, oilTbsp.value, this.value)"></td>
+				<td><span id="oilGrams"></span></td>
 			</tr>
 			<tr>
 				<td>꿀</td>
@@ -171,12 +185,50 @@
 				onchange="honeyConverter(honeyCup.value, honeyTbsp.value, this.value)"></td>
 				<td><span id="honeyGrams"></span></td>
 			</tr>
-			<!--<tr>
-				<td colspan="5"><marquee behavior><p style="color:#FF0000";><strong>@->---- 좋은 하루 되세요 @->----</strong></p> </marquee></td>
-			</tr>-->
+			<tr class="type">
+				<td colspan="5">고체류</td>
+			</tr>
+			<tr>
+				<td>버터</td>
+				<td><input id="butterCup" type="number" min="0"placeholder="227g"
+				oninput="butterConverter(this.value, butterTbsp.value, butterTsp.value)"
+				onchange="butterConverter(this.value, butterTbsp.value, butterTsp.value)"></td>
+				<td><input id="butterTbsp" type="number" min="0"placeholder="14.2g"
+				oninput="butterConverter(butterCup.value, this.value, butterTsp.value)"
+				onchange="butterConverter(butterCup.value, this.value, butterTsp.value)"></td>
+				<td><input id="butterTsp" type="number" min="0"placeholder="4.7g"
+				oninput="butterConverter(butterCup.value, butterTbsp.value, this.value)"
+				onchange="butterConverter(butterCup.value, butterTbsp.value, this.value)"></td>
+				<td><span id="butterGrams"></span></td>
+			</tr>
+			<tr>
+				<td>초코칩</td>
+				<td><input id="chocochipCup" type="number" min="0"placeholder="170g"
+				oninput="chocochipConverter(this.value, chocochipTbsp.value, chocochipTsp.value)"
+				onchange="chocochipConverter(this.value, chocochipTbsp.value, chocochipTsp.value)"></td>
+				<td><input id="chocochipTbsp" type="number" min="0"placeholder="10.6g"
+				oninput="chocochipConverter(chocochipCup.value, this.value, chocochipTsp.value)"
+				onchange="chocochipConverter(chocochipCup.value, this.value, chocochipTsp.value)"></td>
+				<td><input id="chocochipTsp" type="number" min="0"placeholder="3.5g"
+				oninput="chocochipConverter(chocochipCup.value, chocochipTbsp.value, this.value)"
+				onchange="chocochipConverter(chocochipCup.value, chocochipTbsp.value, this.value)"></td>
+				<td><span id="chocochipGrams"></span></td>
+			</tr>
+			<tr>
+				<td>초콜릿 청크</td>
+				<td><input id="chocochunkCup" type="number" min="0"placeholder="140g"
+				oninput="chocochunkConverter(this.value, chocochunkTbsp.value, chocochunkTsp.value)"
+				onchange="chocochunkConverter(this.value, chocochunkTbsp.value, chocochunkTsp.value)"></td>
+				<td><input id="chocochunkTbsp" type="number" min="0"placeholder="8.8g"
+				oninput="chocochunkConverter(chocochunkCup.value, this.value, chocochunkTsp.value)"
+				onchange="chocochunkConverter(chocochunkCup.value, this.value, chocochunkTsp.value)"></td>
+				<td><input id="chocochunkTsp" type="number" min="0"placeholder="2.9g"
+				oninput="chocochunkConverter(chocochunkCup.value, chocochunkTbsp.value, this.value)"
+				onchange="chocochunkConverter(chocochunkCup.value, chocochunkTbsp.value, this.value)"></td>
+				<td><span id="chocochunkGrams"></span></td>
+			</tr>
 		</table></p>
-	<marquee behavior><p style="color:#FF0000";><strong>@->---- 좋은 하루 되세요 @->----</strong></p> </marquee>
-	<!--<button type="button">변환</button><br>-->
+	<p style="text-align:right">제작 : godpp23@naver.com</p>
 	<script type="text/javascript" src="converter.js"></script>
 </body>
 
