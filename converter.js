@@ -49,19 +49,6 @@ var Pan = function(shape, size) {
 	this.size = size;
 }
 
-// var r1 = new roundPan(15);
-// var r2 = new roundPan(18);
-// var r3 = new roundPan(21);
-// var r4 = new roundPan(24);
-// var r5 = new roundPan(26);
-
-// var s1 = new squarePan(13.5);
-// var s2 = new squarePan(16.5);
-// var s3 = new squarePan(19.5);
-// var s4 = new squarePan(22.5);
-// var s5 = new squarePan(25.5);
-// var s6 = new squarePan(30);
-
 function panConverter(before, after, ingredient) {
 	beforeSize = parseFloat(before.substring(1));
 	afterSize = parseFloat(after.substring(1));
