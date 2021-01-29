@@ -11,7 +11,7 @@ function allPurposeFlourConverter(cup, tbsp, tsp) {
 
 function cakeFlourConverter(cup, tbsp, tsp) {
 	var output = cup * 130 + tbsp * 8.13 + tsp * 2.71;
-	document.getElementById("allPurposeFlourGrams").innerHTML = parseFloat(output.toFixed(1));
+	document.getElementById("cakeFlourGrams").innerHTML = parseFloat(output.toFixed(1));
 }
 
 function waterConverter(cup, tbsp, tsp) {
@@ -44,10 +44,35 @@ function honeyConverter(cup, tbsp, tsp) {
 	document.getElementById("honeyGrams").innerHTML = parseFloat(output.toFixed(1));
 }
 
-function panConverter(ingredient, panBefore, panAfter) {
-	after = 42;
-	return after;
+var Pan = function(shape, size) {
+	this.shape = shape;
+	this.size = size;
 }
 
-var output = panConverter(ingredient, panBefore, panAfter);
-document.write(after);
+// var r1 = new roundPan(15);
+// var r2 = new roundPan(18);
+// var r3 = new roundPan(21);
+// var r4 = new roundPan(24);
+// var r5 = new roundPan(26);
+
+// var s1 = new squarePan(13.5);
+// var s2 = new squarePan(16.5);
+// var s3 = new squarePan(19.5);
+// var s4 = new squarePan(22.5);
+// var s5 = new squarePan(25.5);
+// var s6 = new squarePan(30);
+
+function panConverter(before, after, ingredient) {
+	beforeSize = parseFloat(before.substring(1));
+	afterSize = parseFloat(after.substring(1));
+	if (before.charAt(0) === "r") 
+		beforeArea = beforeSize * beforeSize * 3.14;
+	else
+		beforeArea = beforeSize * beforeSize;
+	if (after.charAt(0) === "r")
+		afterArea = afterSize * afterSize * 3.14;
+	else
+		afterArea = afterSize * afterSize;
+	var ratio = afterArea / beforeArea;
+	document.getElementById('afterIngredient').innerHTML = (ingredient * ratio).toFixed(1);
+}

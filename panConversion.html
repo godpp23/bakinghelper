@@ -35,53 +35,56 @@
 </head>
 <body class="center">
 	<a href="gramConversion.html">컵-그램 환산</a>
-	<a href="panConversion.htmls">→다른 틀로 바꾸기</a>
+	<a href="panConversion.html">→다른 틀로 바꾸기</a>
 	<h2>다른 사이즈의 틀로 간편하게 계량을 바꿔보세요. </h2>
 	<p>
 		<p>
 			<form class="form_center">
-			<select name="panBefore" >
+			<select id="panBefore" name="panBefore" >
 				<option value="none" selected>=== 틀 사이즈 ===</option>
-				<option value="round1">원형 1호</option>
-				<option value="round2">원형 2호</option>
-				<option value="round3">원형 3호</option>
-				<option value="round4">원형 4호</option>
-				<option value="round5">원형 5호</option>
-				<option value="square1">사각 1호</option>
-				<option value="square2">사각 2호</option>
-				<option value="square3">사각 3호</option>
-				<option value="square4">사각 4호</option>
-				<option value="square5">사각 5호</option>
+				<option value="r15">원형 1호</option>
+				<option value="r18">원형 2호</option>
+				<option value="r21">원형 3호</option>
+				<option value="r24">원형 4호</option>
+				<option value="r26">원형 5호</option>
+				<option value="s13.5">사각 1호</option>
+				<option value="s16.5">사각 2호</option>
+				<option value="s19.5">사각 3호</option>
+				<option value="s22.5">사각 4호</option>
+				<option value="s25.5">사각 5호</option>
+				<option value="s30">사각 6호</option>
 			</select>
 			&emsp;→&emsp; 
-			<select name="panAfter" >
+			<select id="panAfter" name="panAfter" >
 				<option value="none" selected>=== 틀 사이즈 ===</option>
-				<option value="round1">원형 1호</option>
-				<option value="round2">원형 2호</option>
-				<option value="round3">원형 3호</option>
-				<option value="round4">원형 4호</option>
-				<option value="round5">원형 5호</option>
-				<option value="square1">사각 1호</option>
-				<option value="square2">사각 2호</option>
-				<option value="square3">사각 3호</option>
-				<option value="square4">사각 4호</option>
-				<option value="square5">사각 5호</option>
+				<option value="r15">원형 1호</option>
+				<option value="r18">원형 2호</option>
+				<option value="r21">원형 3호</option>
+				<option value="r24">원형 4호</option>
+				<option value="r26">원형 5호</option>
+				<option value="s13.5">사각 1호</option>
+				<option value="s16.5">사각 2호</option>
+				<option value="s19.5">사각 3호</option>
+				<option value="s22.5">사각 4호</option>
+				<option value="s25.5">사각 5호</option>
+				<option value="s30">사각 6호</option>
 			</select>
 			<p>
-				<input id="before1" type="number" min="0" placeholder="그램">
+				<input id="ingredient" type="number" min="0" placeholder="재료(g)"
+				oninput="panConverter(panBefore.value, panAfter.value, this.value)"
+				onchange="panConverter(panBefore.value, panAfter.value, this.value)">
 			</p>
+			<span id="afterIngredient">틀을 선택하세요.</span>
 			</form>
 		</p>
+		
 	<p>
 		<strong>원형팬 지름</strong><br>
 		1호 : 15cm&emsp; 2호 : 18cm&emsp; 3호 : 21cm&emsp; 4호 : 24cm&emsp; 5호 : 26cm<br><br>
 		<strong>정사각팬 폭</strong><br>
 		1호 : 14cm&emsp; 2호 : 17cm&emsp; 3호 : 20cm&emsp; 4호 : 22.5cm&emsp; 5호 : 26.5cm (낮은 팬 높이 4.5cm)
-		<!-- 원래 틀 : 1호 바꿀 틀 : 2호 -> 1.44배 (높이 동일) -->
-		
 	</p>
 	<marquee behavior><p style="color:#FF0000";><strong>@->---- 좋은 하루 되세요 @->----</strong></p> </marquee>
 	<script type="text/javascript" src="converter.js"></script>
 </body>
-
 </html>
